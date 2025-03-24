@@ -2,37 +2,32 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Головна - Viajero</title>
+    <title>Viajero</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<?php include 'header.php'; ?>
+<?php include 'layout/header.php'; ?>
 
 <div class="container">
-    <?php include 'left_menu.php'; ?>
+    <?php include 'layout/left_menu.php'; ?>
 
     <main>
-        <h2>Останні тревел-гайди</h2>
+        <?php
+            $page = isset($_GET['page']) ? $_GET['page'] : 'main';
 
-        <article>
-            <h3><a href="#">Копенгаген</a></h3>
-            <p>Як провести ідеальні вихідні у столиці Данії: казкові місця, канали та гастро-пригоди</p>
-        </article>
-
-        <article>
-            <h3><a href="#">Валенсія</a></h3>
-            <p>Сонячне місто Іспанії: пляжі, місто мистецтв та науки, локальна кухня</p>
-        </article>
-
-        <article>
-            <h3><a href="#">Прага</a></h3>
-            <p>Серце Чехії: ідеальний маршрут для першого знайомства з містом</p>
-        </article>
+            if ($page === 'about') {
+                include 'views/about.php';
+            } else {
+                include 'views/main.php';
+            }
+        ?>
     </main>
+
+    <!-- <?php include 'layout/right_menu.php'; ?> (якщо є) -->
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include 'layout/footer.php'; ?>
 
 </body>
 </html>
